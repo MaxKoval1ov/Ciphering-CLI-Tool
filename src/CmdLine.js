@@ -13,17 +13,17 @@ function checkFile(path) {
   }
 }
 
-function parseConsole() {
+function parseConsole(args) {
   let map = new Map();
   let count = 0;
   const regExp = /(C1|C0|R1|R0|A)((-C1|-C0|-R1|-R0|-A))*\s/gm;
 
-  process.argv.forEach((el, index) => {
+  args.forEach((el, index) => {
     if (el == "-c" || el == "--config") {
       if (map.has("c")) {
         throw new Error("You provided -c argument more than once");
       } else {
-        map.set("c", process.argv[index + 1].match(/(C1|C0|R1|R0|A)/g));
+        map.set("c", args[index + 1].match(/(C1|C0|R1|R0|A)/g));
         count++;
       }
     }
@@ -32,7 +32,7 @@ function parseConsole() {
       if (map.has("i")) {
         throw new Error("You provided -i argument more than once");
       } else {
-        map.set("i", process.argv[index + 1]);
+        map.set("i", args[index + 1]);
         count++;
       }
     }
@@ -41,7 +41,7 @@ function parseConsole() {
       if (map.has("o")) {
         throw new Error("You provided -o argument more than once");
       } else {
-        map.set("o", process.argv[index + 1]);
+        map.set("o", args[index + 1]);
         count++;
       }
     }
@@ -60,7 +60,7 @@ function parseConsole() {
     map.set("o",path.join(__dirname,"./output.txt"))
   }
 
-  if (count * 2 != process.argv.length - 2) {
+  if (count * 2 != args.length - 2) {
     throw new Error("Args error");
   }
 

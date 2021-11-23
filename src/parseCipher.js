@@ -1,4 +1,5 @@
 const { pipeline } = require("stream");
+const { object } = require("webidl-conversions");
 const { parseConsole } = require("./CmdLine");
 
 const {
@@ -28,32 +29,25 @@ function parseCommands(commandsArr) {
 }
 
 function parseMap(map) {
+  let obj = {};
   map.forEach((value, key) => {
     if (key == "c") {
-      commands = parseCommands(value);
+      obj["commands"] = value;
     }
     if (key == "i") {
-      inputFile = value;
-      input = new MyReadStream(value);
+      obj["inputFile"] = value;
+      // input = new MyReadStream(value);
     }
     if (key == "o") {
-      outputFile = value;
-      output = new MyWriteStream(value)
+      obj["outputFile"] = value;
+      // output = new MyWriteStream(value)
     }
   });
-  if (!output) {
-    output = process.stdout;
-}
-if (!input) {
-    input = process.stdin;
-    process.stdin.resume();
-    process.stdin.on('data', (data) => {
-        if(data.toString().match('exit')){
-            process.exit(0);
-        }
-    });
-}
+return obj;
 }
 
+function getConfigObject(args){
+  parseMap(parseConsole(args))
+}
 
-module.exports = { parseCommands, parseMap}
+module.exports = { parseCommands, parseMap, getConfigObject}

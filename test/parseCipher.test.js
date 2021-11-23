@@ -1,6 +1,6 @@
 const { test, expect, describe } = require("@jest/globals");
 const streams = require("../src/Mystreams");
-const { parseCommands, parseMap } = require("../src/parseCipher");
+const { getConfigObject } = require("../src/parseCipher");
 const { parseConsole } = require("../src/CmdLine");
 const  {encryptA, encryptC, encryptR, decryptC, decryptR}  = require("../src/Encoder");
 
@@ -53,4 +53,31 @@ describe("Rot-13", () => {
         expect( R0(R1( text1 ))).toBe( `This is secret. Message about "_" symbol!` );
     })
    
+})
+
+
+describe("Cipher", () => {
+
+    test("correct encoding", () => {
+        expect( C1( text1 )).toBe( `Uijt jt tfdsfu. Nfttbhf bcpvu "_" tzncpm!` );
+    })
+
+    test("russian alphabet", () => {
+        expect( C1( text2 )).toBe( `Это секрет` );
+    })
+
+    test("different characters", () => {
+        expect( C1( text3 )).toBe( `123456789` );
+    })
+
+    test("correct decoding", () => {
+        expect( C0(C1( text1 ))).toBe( `This is secret. Message about "_" symbol!` );
+    })
+   
+})
+
+describe("Console parsing", () => {
+    test("correct encoding", () => {
+        expect( C1( text1 )).toBe( `Uijt jt tfdsfu. Nfttbhf bcpvu "_" tzncpm!` );
+    })
 })
