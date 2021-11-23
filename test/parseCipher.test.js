@@ -2,9 +2,6 @@ const { test, expect, describe } = require("@jest/globals");
 const fs = require("fs");
 const path = require("path");
 
-
-
-const streams = require("../src/Mystreams");
 const { getConfigObject } = require("../src/parseCipher");
 const { parseConsole } = require("../src/CmdLine");
 const {
@@ -113,26 +110,3 @@ describe("Console parsing", () => {
 });
 
 
-describe("Streams tests",  () => {
-    test("stream test", (done)=> {
-    try {
-        const read = new streams.MyReadStream(path.join(__dirname,"./input.txt"));
-    const transform1 = new streams.myTransformC(true);
-    const transform2 = new streams.myTransformR(true);
-    const write = new streams.MyWriteStream(path.join(__dirname,"./output.txt"));
-    pipeline(
-        read,
-        transform1,
-        transform2,
-        write,
-        function(res){
-            console.log(res);
-        },
-    )
-    expect(fs.readFileSync('./output.txt', {encoding:'utf8', flag:'r'})).toEqual('');
-    }   catch(err){
-        throw new Error(err);
-    }
-    finally{done()}
-    })
-})
