@@ -1,0 +1,27 @@
+{
+  "name": "ciphering-cli-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "CmdLine.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxKoval1ov/Ciphering-CLI-Tool.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxKoval1ov/Ciphering-CLI-Tool/issues"
+  },
+  "homepage": "https://github.com/MaxKoval1ov/Ciphering-CLI-Tool#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
