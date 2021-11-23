@@ -53,11 +53,11 @@ function parseConsole() {
   }
 
   if (!map.has("i")) {
-    map.set("i","./input.txt")
+    map.set("i",path.join(__dirname,"./input.txt"));
   }
 
   if (!map.has("o")) {
-    map.set("o","./output.txt")
+    map.set("o",path.join(__dirname,"./output.txt"))
   }
 
   if (count * 2 != process.argv.length - 2) {
