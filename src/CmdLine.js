@@ -9,7 +9,7 @@ function checkFile(path) {
       }
     });
   } else {
-    throw new Error("Invalid path");
+    console.log("Invalid path");
   }
 }
 

@@ -47,7 +47,8 @@ return obj;
 }
 
 function getConfigObject(args){
-  parseMap(parseConsole(args))
+  return parseMap(parseConsole(args))
 }
+
 
 module.exports = { parseCommands, parseMap, getConfigObject}

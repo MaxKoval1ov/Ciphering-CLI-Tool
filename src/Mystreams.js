@@ -37,9 +37,7 @@ class MyReadStream extends Readable {
     _destroy(err, callback) {
         if (this.fd) {
             fs.close(this.fd, (er) => callback(er || err));
-        } else {
-            callback(err);
-        }
+        } 
     }
 }
 
@@ -49,7 +47,7 @@ class MyWriteStream extends Writable {
         this.filename = filename;
     }
     _construct(callback) {
-        fs.open(this.filename, 'a', (err, fd) => {
+        fs.open(this.filename, 'w', (err, fd) => {
             if (err) {
                 callback(err);
             } else {
@@ -115,10 +113,28 @@ class myTransformA extends Transform {
   }
 }
 
+function MyStreamFunction(){
+    const read = new streams.MyReadStream(path.join(__dirname,"./input.txt"));
+    const transform1 = new streams.myTransformC(true);
+    const transform2 = new streams.myTransformR(true);
+    const write = new streams.MyWriteStream(path.join(__dirname,"./output.txt"));
+    pipeline(
+        read,
+        transform1,
+        transform2,
+        write,
+        read,
+        function(res){
+            return res;
+        }
+    )
+}
+
 module.exports = {
   MyWriteStream,
   MyReadStream,
   myTransformC,
   myTransformR,
   myTransformA,
+  MyStreamFunction
 };

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">69.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>16/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>6/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>3/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">69.56% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>16/23</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -109,7 +109,8 @@
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
 <a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,25 +141,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { pipeline } = require("stream");
@@ -191,27 +193,28 @@ function <span class="fstat-no" title="function not covered" >parseCommands(</sp
 <span class="cstat-no" title="statement not covered" >  return commands;</span>
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >parseMap(</span>map) {
-  let obj = <span class="cstat-no" title="statement not covered" >{};</span>
-<span class="cstat-no" title="statement not covered" >  map.forEach(<span class="fstat-no" title="function not covered" >(v</span>alue, key) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (key == "c") {</span>
-<span class="cstat-no" title="statement not covered" >      obj["commands"] = value;</span>
+function parseMap(map) {
+  let obj = {};
+  map.forEach((value, key) =&gt; {
+    if (key == "c") {
+      obj["commands"] = value;
     }
-<span class="cstat-no" title="statement not covered" >    if (key == "i") {</span>
-<span class="cstat-no" title="statement not covered" >      obj["inputFile"] = value;</span>
+    if (key == "i") {
+      obj["inputFile"] = value;
       // input = new MyReadStream(value);
     }
-<span class="cstat-no" title="statement not covered" >    if (key == "o") {</span>
-<span class="cstat-no" title="statement not covered" >      obj["outputFile"] = value;</span>
+    if (key == "o") {
+      obj["outputFile"] = value;
       // output = new MyWriteStream(value)
     }
   });
-<span class="cstat-no" title="statement not covered" >return obj;</span>
+return obj;
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >getConfigObject(</span>args){
-<span class="cstat-no" title="statement not covered" >  parseMap(parseConsole(args))</span>
+function getConfigObject(args){
+  return parseMap(parseConsole(args))
 }
+&nbsp;
 &nbsp;
 module.exports = { parseCommands, parseMap, getConfigObject}</pre></td></tr></table></pre>
 
@@ -220,7 +223,7 @@ module.exports = { parseCommands, parseMap, getConfigObject}</pre></td></tr></ta
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Nov 23 2021 12:23:36 GMT+0300 (Moscow Standard Time)
+                at Tue Nov 23 2021 14:48:28 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="prettify.js"></script>
