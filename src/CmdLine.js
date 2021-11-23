@@ -21,7 +21,7 @@ function parseConsole() {
   process.argv.forEach((el, index) => {
     if (el == "-c" || el == "--config") {
       if (map.has("c")) {
-        throw new Error("Multi c");
+        throw new Error("You provided -c argument more than once");
       } else {
         map.set("c", process.argv[index + 1].match(/(C1|C0|R1|R0|A)/g));
         count++;
@@ -30,7 +30,7 @@ function parseConsole() {
 
     if (el == "-i" || el == "--input") {
       if (map.has("i")) {
-        throw new Error("Multi input");
+        throw new Error("You provided -i argument more than once");
       } else {
         map.set("i", process.argv[index + 1]);
         count++;
@@ -39,7 +39,7 @@ function parseConsole() {
 
     if (el === "-o" || el === "--output") {
       if (map.has("o")) {
-        throw new Error("Multi output");
+        throw new Error("You provided -o argument more than once");
       } else {
         map.set("o", process.argv[index + 1]);
         count++;
