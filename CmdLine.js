@@ -23,7 +23,7 @@ function parseConsole() {
       if (map.has("c")) {
         throw new Error("Multi c");
       } else {
-        map.set("c", process.argv[index + 1].match(/[A-Fa-f]\d*/g));
+        map.set("c", process.argv[index + 1].match(/(C1|C0|R1|R0|A)/g));
         count++;
       }
     }

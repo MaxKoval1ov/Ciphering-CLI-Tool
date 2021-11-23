@@ -59,7 +59,7 @@ let alphabetLower = [
 class Encoder {
 encrypt(string, num) {
   if (string === undefined ) throw new Error("Incorrect arguments!");
-  string=string.split("");
+  string = string.split("");
   let res=[];
   string.forEach(element => {
     if(/[A-Z]/.test(element))
@@ -76,6 +76,7 @@ encrypt(string, num) {
 }
 decrypt(string, num) {
   if (string === undefined ) throw new Error("Incorrect arguments!");
+  string = string.split("");
   let res=[];
   string.forEach(element => {
     if(/[A-Z]/.test(element))
