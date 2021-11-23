@@ -53,4 +53,4 @@ function success(){
     console.log("Success!");
 }
 
-pipeline(input, ...commands, output,success);
+pipeline(input, ...commands,output,success);
