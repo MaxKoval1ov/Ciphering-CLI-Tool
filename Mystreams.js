@@ -71,7 +71,9 @@ class MyWriteStream extends Writable {
 
 class myTransformC extends Transform {
   constructor(encode, options = {}) {
-    
+    options = Object.assign({}, options, {
+        decodeStrings: false
+    });
     super(options);
     this.encode = encode;
   }
@@ -80,13 +82,12 @@ class myTransformC extends Transform {
     if (chunk) {
       this.encode ? this.push(encoder.encryptC(chunk.toString("utf8"))) : this.push(encoder.decryptC(chunk.toString("utf8")));
     }
-    callback();
+    // callback();
   }
 }
 
 class myTransformR extends Transform {
   constructor(encode, options = {}) {
-    
     super(options);
     this.encode = encode;
   }
@@ -101,7 +102,6 @@ class myTransformR extends Transform {
 
 class myTransformA extends Transform {
   constructor(funcAndArgsObj, options = {}) {
-   
     super(options);
     this.funcAndArgsObj = funcAndArgsObj;
   }
@@ -110,7 +110,7 @@ class myTransformA extends Transform {
     if (chunk) {
       this.push(encoder.encryptA(chunk.toString("utf8")));
     }
-    callback();
+    // callback();
   }
 }
 

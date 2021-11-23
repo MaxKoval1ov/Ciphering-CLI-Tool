@@ -9,14 +9,12 @@ const {
   myTransformC,
 } = require("./Mystreams");
 
-let inputFile, outputFile;
 let input, output;
 let commands = [];
 
 function parseCommands(commandsArr) {
   let commands = [];
   commandsArr.forEach((el) => {
-      console.log(el);
     if (el.length == 2) {
       el[1] == "1" ? (encode = true) : (encode = false);
       el[0] == "C"
@@ -43,11 +41,26 @@ function parseMap(map) {
       output = new MyWriteStream(value)
     }
   });
+  if (!output) {
+    output = process.stdout;
 }
+if (!input) {
+    input = process.stdin;
+    process.stdin.resume();
+    process.stdin.on('data', (data) => {
+        if(data.toString().match('exit')){
+            process.exit(0);
+        }
+    });
+}
+}
+
+
+
+
 
 parseMap(parseConsole());
 
-console.log(inputFile, outputFile, commands.length);
 
 function success(){
     console.log("Success!");

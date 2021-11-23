@@ -117,7 +117,7 @@ encryptA(string){
     if(/[A-Z]/.test(element))
     {
       res.push(alphabetUpperReversed[alphabetUpper.indexOf(element)]);
-    }
+    }    else
     if(/[a-z]/.test(element))
     {
       res.push(alphabetLowerReversed[alphabetLower.indexOf(element)]);
