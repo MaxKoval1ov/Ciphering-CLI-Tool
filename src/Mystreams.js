@@ -1,8 +1,9 @@
 const { Readable, Writable, Transform } = require("stream");
 const fs = require("fs");
+const  {encryptA, encryptC, encryptR, decryptC, decryptR}  = require("../src/Encoder");
 
-const Encoder = require("./Encoder");
-const encoder = new Encoder();
+
+
 
 class MyReadStream extends Readable {
     constructor(filename, options = {}) {
@@ -80,7 +81,7 @@ class myTransformC extends Transform {
 
   _transform(chunk, callback) {
     if (chunk) {
-      this.encode ? this.push(encoder.encryptC(chunk.toString("utf8"))) : this.push(encoder.decryptC(chunk.toString("utf8")));
+      this.encode ? this.push(encryptC(chunk.toString("utf8"))) : this.push(decryptC(chunk.toString("utf8")));
     }
     // callback();
   }
@@ -94,7 +95,7 @@ class myTransformR extends Transform {
 
   _transform(chunk, callback) {
     if (chunk) {
-        this.encode ? this.push(encoder.encryptR( chunk.toString("utf8"))) : this.push(encoder.decryptR( chunk.toString("utf8")));
+        this.encode ? this.push(encryptR( chunk.toString("utf8"))) : this.push(decryptR( chunk.toString("utf8")));
     }
     // callback();
   }
@@ -108,7 +109,7 @@ class myTransformA extends Transform {
 
   _transform(chunk, callback) {
     if (chunk) {
-      this.push(encoder.encryptA(chunk.toString("utf8")));
+      this.push(encryptA(chunk.toString("utf8")));
     }
     // callback();
   }

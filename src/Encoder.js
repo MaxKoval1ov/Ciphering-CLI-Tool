@@ -56,8 +56,8 @@ let alphabetLower = [
 "z",
 ];
 
-class Encoder {
-encrypt(string, num) {
+
+function encrypt(string, num) {
   if (string === undefined ) throw new Error("Incorrect arguments!");
   string = string.split("");
   let res=[];
@@ -74,7 +74,8 @@ encrypt(string, num) {
   });
   return res.join("");
 }
-decrypt(string, num) {
+
+function decrypt(string, num) {
   if (string === undefined ) throw new Error("Incorrect arguments!");
   string = string.split("");
   let res=[];
@@ -92,22 +93,22 @@ decrypt(string, num) {
   return res.join("");
 }
 
-encryptC(string){
-  return this.encrypt(string,1);
+function encryptC(string){
+  return encrypt(string,1);
 }
 
-decryptC(string){
-  return this.decrypt(string,1);
+function decryptC(string){
+  return decrypt(string,1);
 }
 
-encryptR(string){
-  return this.encrypt(string,13);
+function encryptR(string){
+  return encrypt(string,13);
 }
 
-decryptR(string){
-  return this.decrypt(string,13);
+function decryptR(string){
+  return decrypt(string,13);
 }
-encryptA(string){
+function encryptA(string){
   if (string === undefined) throw new Error("Incorrect arguments!");
   string = string.split("");
   let alphabetUpperReversed = alphabetUpper.slice().reverse();
@@ -127,6 +128,6 @@ encryptA(string){
   });
   return res.join("") ;
 }
-}
 
-module.exports = Encoder;
+
+module.exports = {encryptA, encryptC, encryptR, decryptC, decryptR};

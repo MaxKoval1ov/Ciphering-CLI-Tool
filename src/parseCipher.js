@@ -56,14 +56,4 @@ if (!input) {
 }
 
 
-
-
-
-parseMap(parseConsole());
-
-
-function success(){
-    console.log("Success!");
-}
-
-pipeline(input, ...commands,output,success);
+module.exports = { parseCommands, parseMap}
